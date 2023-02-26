@@ -25,6 +25,7 @@ contract OfficialSignature {
     }
 
     struct UserCommitPackageSign {
+        uint256 isVerify;
         bytes32 commit;
         address contributor;
         string packageName;
@@ -38,6 +39,9 @@ contract OfficialSignature {
     UserCommitPackageSign[] private _userCommitPackageSign;
 
     event Deploy(address owner, string projectFlag, address bannedContract, address utContract);
+    event UserCommit(address user, uint256 blockNumber, string packageName, string desc, string[] signData);
+    event VerifySign(address verifier, uint256 blockNumber, string packageName, string[] signatures);
+    event SetBanned(address contractOwner, uint256 blockNumber, address newBanned);
 
     modifier onlyOwner() {
         require(msg.sender == _contractOwner);
@@ -88,13 +92,17 @@ contract OfficialSignature {
         }
 
         bytes32 commit = keccak256(abi.encodePacked(block.number, msg.sender, packageName, desc, signData));
-        UserCommitPackageSign memory packageSignInfo = UserCommitPackageSign(commit, msg.sender, packageName, signs);
+        UserCommitPackageSign memory packageSignInfo = UserCommitPackageSign(0, commit, msg.sender, packageName, signs);
         _userCommitPackageSign.push(packageSignInfo);
+
+        emit UserCommit(msg.sender, block.number, packageName, desc, signs);
     }
 
     //verify & reward - manager operate
     function setBannedContract(address newBanned) public onlyOwner {
         _bannedContract = newBanned;
+
+        emit SetBanned(msg.sender, block.number, newBanned);
     }
 
     function verifySignatureInfo(bytes32[] memory verifyCommits, uint256 begin, uint256 end) public onlyOwner {
@@ -107,14 +115,20 @@ contract OfficialSignature {
         uint256 verifyUsed = 0;
         for(uint256 off = begin; off < end; off ++) {
             if(verifyCommits[verifyUsed] == _userCommitPackageSign[off].commit) {
-                _packageSign[_userCommitPackageSign[off].packageName] = _userCommitPackageSign[off].signatures;
-                UnknownToken(_unknownTokenContract).transferFrom(msg.sender, _userCommitPackageSign[off].contributor, 1000);
+                if(_userCommitPackageSign[off].isVerify == 0) {
+                    _packageSign[_userCommitPackageSign[off].packageName] = _userCommitPackageSign[off].signatures;
+                    UnknownToken(_unknownTokenContract).transferFrom(msg.sender, _userCommitPackageSign[off].contributor, 1000);
+                    _userCommitPackageSign[off].isVerify = 1;
+
+                    emit VerifySign(msg.sender, block.number, _userCommitPackageSign[off].packageName, _userCommitPackageSign[off].signatures);
+                }
                 verifyUsed += 1;
             }
 
             if(verifyUsed == verifyCommits.length)
                 break;
         }
+
     }
 
 }
