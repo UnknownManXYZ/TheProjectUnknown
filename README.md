@@ -31,3 +31,8 @@ Save Android application PackageName And Signature MD5, help people confirm inst
 - block number : 16709774
 - contract addr : 0xd387Fcd7653338430129D0d8040338FF15Dd642B
 
+### publish info
+
+- call UnknownTokenV1.publish : 0xd899ee6bce365c4040961c22ff9befe4923f6c3addaf3c78f94c4e56530a09fa
+- 
+- call UnknownTokenV1.increaseAllowance : 0xc2409ff57e9adfed39ec1b1b47014b063cfdb62ed1d1c69fac045028a492dc54
