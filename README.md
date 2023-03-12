@@ -40,3 +40,7 @@ Save Android application PackageName And Signature MD5, help people confirm inst
 ### VerifyIt For Android
 
 You can download release/verify.it_vx.x.x.apk and use it to check installed apps.
+
+![image](https://github.com/UnknownManXYZ/TheProjectUnknown/blob/main/doc/fake.png)
+![image](https://github.com/UnknownManXYZ/TheProjectUnknown/blob/main/doc/detail.png)
+![image](https://github.com/UnknownManXYZ/TheProjectUnknown/blob/main/doc/genuine.png)
