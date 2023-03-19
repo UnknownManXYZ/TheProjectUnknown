@@ -54,3 +54,9 @@ Update from v1, both help people confirm installed apps are not pirated, v2 use 
 - contract owner : verify user's commit and send UnknownToken as rewards, each Valuable info will get 500 UKT.
 
 - user : you can get verify info by this contract, and also commit the genuine APP information you are using.
+
+### Ethernum Mainnet Info
+
+- tx: 0xaf4f8cdcd4b3f2ffbd8f4da1262867870bed3d5d940ee941809bca1d40810865
+- block number : 16862242
+- contract addr : 0x554BC8CBe6B48B6ae4C2b43DdBb691Ecc55F7cEB 
