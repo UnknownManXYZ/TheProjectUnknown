@@ -44,3 +44,13 @@ You can download release/verify.it_vx.x.x.apk and use it to check installed apps
 ![image](https://github.com/UnknownManXYZ/TheProjectUnknown/blob/main/doc/fake.png)
 ![image](https://github.com/UnknownManXYZ/TheProjectUnknown/blob/main/doc/detail.png)
 ![image](https://github.com/UnknownManXYZ/TheProjectUnknown/blob/main/doc/genuine.png)
+
+## The Second Unknown Project
+
+### Official Signature V2 Intro
+
+Update from v1, both help people confirm installed apps are not pirated, v2 use less gas than v1.
+
+- contract owner : verify user's commit and send UnknownToken as rewards, each Valuable info will get 500 UKT.
+
+- user : you can get verify info by this contract, and also commit the genuine APP information you are using.
