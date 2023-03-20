@@ -2,6 +2,8 @@
 
 The Unknown project, work with unknown token.
 
+Now you can download the app from google play : https://play.google.com/store/apps/details?id=theprojectunknown.verify.it.googleplay
+
 ## UnknownTokenV1
 
 ### Ethernum Mainnet Info
